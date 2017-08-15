@@ -1,0 +1,6 @@
+[submodule "ed25519-donna/ed25519-donna"]
+	path = ed25519-donna/ed25519-donna
+	url = https://github.com/floodyberry/ed25519-donna
+[submodule "ed25519-dalek/ed25519-dalek"]
+	path = ed25519-dalek/ed25519-dalek
+	url = https://github.com/isislovecruft/ed25519-dalek
