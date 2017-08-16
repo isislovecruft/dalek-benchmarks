@@ -37,6 +37,8 @@
 //     IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //     DEALINGS IN THE SOFTWARE.
 
+#[ignore(unused)]
+
 extern crate gcc;
 extern crate pkg_config;
 #[cfg(target_env = "msvc")]

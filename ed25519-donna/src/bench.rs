@@ -13,9 +13,7 @@
 use ffi::ed25519_donna_publickey;
 use ffi::ed25519_donna_sign;
 use ffi::ed25519_donna_sign_open;
-// use ffi::ed25519_donna_sign_open_batch;
-// use ffi::ed25519_donna_randombytes_unsafe;
-// use ffi::ed25519_donna_curved25519_scalarmult_basepoint;
+use ffi::ed25519_donna_curved25519_scalarmult_basepoint;
 
 use test::Bencher;
 
@@ -52,23 +50,12 @@ fn bench_ed25519_donna_sign_open(b: &mut Bencher) {
     b.iter(|| ed25519_donna_sign_open(&MESSAGE.as_bytes(), &ED25519_PUBLIC_KEY_BYTES, &signature));
 }
 
-// #[bench]
-// fn bench_ed25519_donna_sign_open_batch(b: &mut Bencher) {
-//     unsafe {
-//         ed25519_donna_sign_open_batch();
-//     }
-// }
-// 
-// #[bench]
-// fn bench_ed25519_donna_randombytes_unsafe(b: &mut Bencher) {
-//     unsafe {
-//         ed25519_donna_randombytes_unsafe();
-//     }
-// }
-// 
-// #[bench]
-// fn bench_ed25519_donna_scalarmult_basepoint(b: &mut Bencher) {
-//     unsafe {
-//         ed25519_donna_curved25519_scalarmult_basepoint();
-//     }
-// }
+#[bench]
+fn bench_ed25519_donna_scalarmult_basepoint(b: &mut Bencher) {
+    let scalar: [u8; 32] = [  20, 130, 129, 196, 247, 182, 211, 102,
+                              11, 168, 169, 131, 159,  69, 126,  35,
+                             109, 193, 175,  54, 118, 234, 138,  81,
+                              60, 183,  80, 186,  92, 248, 132,  13, ];
+
+    b.iter(|| ed25519_donna_curved25519_scalarmult_basepoint(&scalar));
+}

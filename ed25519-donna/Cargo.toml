@@ -8,10 +8,23 @@ build = "build.rs"
 [dependencies]
 libc = "*"
 
+[dependencies.curve25519-dalek]
+optional = true
+version = "^0.11"
+features = ["nightly", "bench"]
+
 [build-dependencies]
 pkg-config = "*"
 gcc = "*"
 
-
 [features]
+default = ["bench", "groupcmp"]
 bench = []
+# The following feature should be enabled if you would like to compare
+# curve25519-dalek's `impl<'a, 'b> Mul<&'a EdwardsBasepointTable> for &'b Scalar`
+# versus ed25519-donna's `curved25519_scalarmult_basepoint()`, i.e. comparing
+# lower-level basepoint scalar multiplication operations in addition to
+# more complex/variable-format signatures.
+#
+# This is a more basic, and perhaps more fair, comparison.
+groupcmp = ["curve25519-dalek"]

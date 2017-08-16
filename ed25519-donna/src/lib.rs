@@ -12,8 +12,12 @@ extern crate test;
 #[cfg(all(test, feature = "bench"))]
 extern crate libc;
 
+#[cfg(all(test, feature = "bench", feature = "groupcmp"))]
+extern crate curve25519_dalek;
+
 #[cfg(all(test, feature = "bench"))]
 pub mod ffi;
 
 #[cfg(all(test, feature = "bench"))]
 mod bench;
+
