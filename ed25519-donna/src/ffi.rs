@@ -6,7 +6,7 @@
 
 use libc::{c_int, c_uchar, c_void, size_t};
 
-#[link(name = "ed25519_donna")]
+#[link(name = "ed25519donna")]
 extern "C" {
     fn ed25519_publickey(sk: *const c_uchar, pk: *mut c_uchar);
     fn ed25519_sign(m: *const c_uchar, mlen: size_t, sk: *const c_uchar, pk: *const c_uchar, RS: *mut c_uchar);

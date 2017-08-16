@@ -566,6 +566,7 @@ fn main() {
         .include("/usr/include/openssl")
         .include("/usr/include")
         .include("ed25519-donna")
+        .define("ED25519_REFHASH", None)
         //.define("ED25519_INLINE_ASM", None)
         //.define("ED25519_CUSTOMHASH", None)
         //.define("ED25519_CUSTOMRANDOM", None)
